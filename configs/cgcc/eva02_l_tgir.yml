@@ -1,0 +1,47 @@
+MODEL:
+  TYPE: eva02_cloth
+  NAME: eva02_l_tgir
+  LOSS_TYPE: ['ce','triplet']
+  NONBIO_HEAD: False
+  LAST_LAYER: 'clipFc'
+  IF_LABELSMOOTH: 'off'
+  IF_WITH_CENTER: 'no'
+  NO_MARGIN: True
+  CLIP_DIM: 1024
+  CLIP_LOSS_TYPE: 'constant'
+  DIST_TRAIN: True
+
+DATA:
+  IMG_HEIGHT: 224
+  IMG_WIDTH: 224
+  DATASET: 'cgcc'
+  NOBIO_INDEX: [1, 2]
+  SUMMERY_TEXT: false
+  TEXT_MODEL: 'EVA02-CLIP'
+  NUM_INSTANCES: 2
+  BATCH_SIZE: 40
+  NUM_WORKERS: 1
+  PIN_MEMORY: False
+  CAPTION_DIR: "./datasets/CGCC"
+  ROOT: "./datasets"
+
+SOLVER:
+  OPTIMIZER_NAME: 'SGD'
+  MAX_EPOCHS: 60
+  BASE_LR: 2e-5
+  WARMUP_METHOD: 'linear'
+  LARGE_FC_LR: False
+  CHECKPOINT_PERIOD: 60
+  LOG_PERIOD: 50
+  EVAL_PERIOD: 5
+  WEIGHT_DECAY:  0.05
+  WEIGHT_DECAY_BIAS: 0.05
+  BIAS_LR_FACTOR: 2
+
+TEST:
+  WEIGHT: ''
+  FEAT_NORM: 'yes'
+  TYPE: 'image_only'
+
+OUTPUT_DIR: './logs/cgcc'
+

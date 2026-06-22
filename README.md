@@ -99,7 +99,7 @@ pip install -r requirements.txt
 Download CGCC from [Hugging Face Datasets](https://huggingface.co/datasets/zhiTTime/cgcc), place it under `datasets/CGCC`, and check the dataset paths in:
 
 ```text
-configs/cgcc/eva02_l_bio.yml
+configs/cgcc/eva02_l_tgir.yml
 ```
 
 Make sure the image folders, split files, semantic annotation files, and extracted text/image features are available before training.
@@ -115,7 +115,6 @@ CUDA_VISIBLE_DEVICES=0 python -m torch.distributed.launch \
   train.py \
   --jobId 0 \
   --loss "ce,triplet,proto_itc,svd" \
-  --config_file configs/cgcc/eva02_l_bio.yml
+  --config_file configs/cgcc/eva02_l_tgir.yml
 ```
-
 
